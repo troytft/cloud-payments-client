@@ -155,8 +155,12 @@ class Manager
             'PaRes' => $token
         ]);
 
-        if (!$response['Success']) {
+        if ($response['Message']) {
             throw new Exception\RequestException($response);
+        }
+
+        if (isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
+            throw new Exception\PaymentException($response);
         }
 
         return Model\Transaction::fromArray($response['Model']);
