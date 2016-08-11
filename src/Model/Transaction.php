@@ -862,8 +862,8 @@ class Transaction
         $transaction->setIpLongitude($params['IpLongitude']);
         $transaction->setCardFirstSix($params['CardFirstSix']);
         $transaction->setCardLastFour($params['CardLastFour']);
-        $transaction->setCardExpiredMonth(explode('/', $params)[0]);
-        $transaction->setCardExpiredYear(substr(date('Y'), 0, 2) . explode('/', $params)[1]);
+        $transaction->setCardExpiredMonth(explode('/', $params['CardExpDate'])[0]);
+        $transaction->setCardExpiredYear(substr(date('Y'), 0, 2) . explode('/', $params['CardExpDate'])[1]);
         $transaction->setCardType(strtolower($params['CardType']));
         $transaction->setCardTypeCode($params['CardTypeCode']);
         $transaction->setIssuer($params['Issuer']);
