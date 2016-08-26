@@ -150,7 +150,7 @@ class Manager
      */
     public function confirm3DS($transactionId, $token)
     {
-        $response = $this->sendRequest('/payments/post3ds', [
+        $response = $this->sendRequest('/payments/cards/post3ds', [
             'TransactionId' => $transactionId,
             'PaRes' => $token
         ]);
