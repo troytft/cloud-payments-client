@@ -146,6 +146,7 @@ class Manager
      * @param $transactionId
      * @param $token
      * @return Model\Transaction
+     * @throws Exception\PaymentException
      * @throws Exception\RequestException
      */
     public function confirm3DS($transactionId, $token)
@@ -223,7 +224,7 @@ class Manager
     public function findPayment($invoiceId)
     {
         $response = $this->sendRequest('/payments/find', [
-            'TransactionId' => $invoiceId
+            'InvoiceId' => $invoiceId
         ]);
 
         if (!$response['Success']) {
