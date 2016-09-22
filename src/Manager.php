@@ -244,6 +244,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setUrl($value)
     {
@@ -262,6 +263,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setPublicKey($value)
     {
@@ -280,6 +282,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setPrivateKey($value)
     {
