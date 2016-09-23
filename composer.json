@@ -11,10 +11,5 @@
         "psr-4" : {
             "CloudPayments\\" : "src/"
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.0.x-dev"
-        }
     }
 }
