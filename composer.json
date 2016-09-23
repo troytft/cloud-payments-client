@@ -1,7 +1,7 @@
 {
-    "name" : "troytft/cloud-payments-client",
+    "name" : "sannysoft/cloud-payments-client",
     "description": "Client for CloudPayments.ru",
-    "version" : "0.0.4",
+    "version" : "0.0.5",
     "type" : "library",
     "license" : "MIT",
     "require" : {

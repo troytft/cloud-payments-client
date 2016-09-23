@@ -194,6 +194,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setId($value)
     {
@@ -212,6 +213,7 @@ class Transaction
 
     /**
      * @param float $value
+     * @return $this
      */
     public function setAmount($value)
     {
@@ -230,6 +232,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCurrency($value)
     {
@@ -248,6 +251,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setCurrencyCode($value)
     {
@@ -266,6 +270,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setInvoiceId($value)
     {
@@ -284,6 +289,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setAccountId($value)
     {
@@ -302,6 +308,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setEmail($value)
     {
@@ -320,6 +327,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setDescription($value)
     {
@@ -338,6 +346,7 @@ class Transaction
 
     /**
      * @param array $value
+     * @return $this
      */
     public function setData($value)
     {
@@ -356,6 +365,7 @@ class Transaction
 
     /**
      * @param \DateTime $value
+     * @return $this
      */
     public function setCreatedAt($value)
     {
@@ -374,6 +384,7 @@ class Transaction
 
     /**
      * @param \DateTime $value
+     * @return $this
      */
     public function setAuthorizedAt($value)
     {
@@ -392,6 +403,7 @@ class Transaction
 
     /**
      * @param \DateTime $value
+     * @return $this
      */
     public function setConfirmedAt($value)
     {
@@ -410,6 +422,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setAuthCode($value)
     {
@@ -428,6 +441,7 @@ class Transaction
 
     /**
      * @param boolean $value
+     * @return $this
      */
     public function setTestMode($value)
     {
@@ -446,6 +460,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIpAddress($value)
     {
@@ -464,6 +479,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIpCountry($value)
     {
@@ -482,6 +498,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIpCity($value)
     {
@@ -500,6 +517,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIpRegion($value)
     {
@@ -518,6 +536,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIpDistrict($value)
     {
@@ -536,6 +555,7 @@ class Transaction
 
     /**
      * @param float $value
+     * @return $this
      */
     public function setIpLatitude($value)
     {
@@ -554,6 +574,7 @@ class Transaction
 
     /**
      * @param float $value
+     * @return $this
      */
     public function setIpLongitude($value)
     {
@@ -572,6 +593,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCardFirstSix($value)
     {
@@ -590,6 +612,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCardLastFour($value)
     {
@@ -608,6 +631,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setCardExpiredMonth($value)
     {
@@ -626,6 +650,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setCardExpiredYear($value)
     {
@@ -644,6 +669,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCardType($value)
     {
@@ -662,6 +688,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setCardTypeCode($value)
     {
@@ -680,6 +707,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIssuer($value)
     {
@@ -698,6 +726,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setIssuerBankCountry($value)
     {
@@ -716,6 +745,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setStatus($value)
     {
@@ -734,6 +764,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setStatusCode($value)
     {
@@ -752,6 +783,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setReason($value)
     {
@@ -770,6 +802,7 @@ class Transaction
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setReasonCode($value)
     {
@@ -788,6 +821,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCardHolderMessage($value)
     {
@@ -806,6 +840,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setCardHolderName($value)
     {
@@ -824,6 +859,7 @@ class Transaction
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setToken($value)
     {
@@ -839,42 +875,72 @@ class Transaction
     public static function fromArray($params)
     {
         $transaction = new Transaction();
+
         $transaction->setId($params['TransactionId']);
         $transaction->setAmount($params['Amount']);
         $transaction->setCurrency($params['Currency']);
         $transaction->setCurrencyCode($params['CurrencyCode']);
-        $transaction->setInvoiceId($params['InvoiceId']);
-        $transaction->setAccountId(['AccountId']);
-        $transaction->setEmail($params['Email']);
-        $transaction->setDescription($params['Description']);
-        $transaction->setData((array) $params['JsonData']);
-        $transaction->setCreatedAt(new \DateTime($params['CreatedDateIso']));
-        $transaction->setAuthorizedAt(new \DateTime($params['AuthDateIso']));
-        $transaction->setConfirmedAt(new \DateTime($params['ConfirmDateIso']));
-        $transaction->setAuthCode($params['AuthCode']);
-        $transaction->setTestMode($params['TestMode']);
-        $transaction->setIpAddress($params['IpAddress']);
-        $transaction->setIpCountry($params['IpCountry']);
-        $transaction->setIpCity($params['IpCity']);
-        $transaction->setIpRegion($params['IpRegion']);
-        $transaction->setIpDistrict($params['IpDistrict']);
-        $transaction->setIpLatitude($params['IpLatitude']);
-        $transaction->setIpLongitude($params['IpLongitude']);
         $transaction->setCardFirstSix($params['CardFirstSix']);
         $transaction->setCardLastFour($params['CardLastFour']);
         $transaction->setCardExpiredMonth(explode('/', $params['CardExpDate'])[0]);
         $transaction->setCardExpiredYear(substr(date('Y'), 0, 2) . explode('/', $params['CardExpDate'])[1]);
-        $transaction->setCardType(strtolower($params['CardType']));
-        $transaction->setCardTypeCode($params['CardTypeCode']);
-        $transaction->setIssuer($params['Issuer']);
-        $transaction->setIssuerBankCountry($params['IssuerBankCountry']);
-        $transaction->setStatus(strtolower($params['Status']));
-        $transaction->setStatusCode($params['StatusCode']);
-        $transaction->setReason($params['Reason']);
-        $transaction->setReasonCode($params['ReasonCode']);
-        $transaction->setCardHolderMessage($params['CardHolderMessage']);
-        $transaction->setCardHolderName($params['Name']);
-        $transaction->setToken($params['Token']);
+
+        if (isset($params['InvoiceId']))
+            $transaction->setInvoiceId($params['InvoiceId']);
+        if (isset($params['AccountId']))
+            $transaction->setAccountId(['AccountId']);
+        if (isset($params['Email']))
+            $transaction->setEmail($params['Email']);
+        if (isset($params['Description']))
+            $transaction->setDescription($params['Description']);
+        if (isset($params['JsonData']))
+            $transaction->setData((array)$params['JsonData']);
+        if (isset($params['CreatedDateIso']))
+            $transaction->setCreatedAt(new \DateTime($params['CreatedDateIso']));
+        if (isset($params['AuthDateIso']))
+            $transaction->setAuthorizedAt(new \DateTime($params['AuthDateIso']));
+        if (isset($params['ConfirmDateIso']))
+            $transaction->setConfirmedAt(new \DateTime($params['ConfirmDateIso']));
+        if (isset($params['AuthCode']))
+            $transaction->setAuthCode($params['AuthCode']);
+        if (isset($params['TestMode']))
+            $transaction->setTestMode($params['TestMode']);
+        if (isset($params['IpAddress']))
+            $transaction->setIpAddress($params['IpAddress']);
+        if (isset($params['IpCountry']))
+            $transaction->setIpCountry($params['IpCountry']);
+        if (isset($params['IpCity']))
+            $transaction->setIpCity($params['IpCity']);
+        if (isset($params['IpRegion']))
+            $transaction->setIpRegion($params['IpRegion']);
+        if (isset($params['IpDistrict']))
+            $transaction->setIpDistrict($params['IpDistrict']);
+        if (isset($params['IpLatitude']))
+            $transaction->setIpLatitude($params['IpLatitude']);
+        if (isset($params['IpLongitude']))
+            $transaction->setIpLongitude($params['IpLongitude']);
+        if (isset($params['CardType']))
+            $transaction->setCardType(strtolower($params['CardType']));
+        if (isset($params['CardTypeCode']))
+            $transaction->setCardTypeCode($params['CardTypeCode']);
+        if (isset($params['Issuer']))
+            $transaction->setIssuer($params['Issuer']);
+        if (isset($params['IssuerBankCountry']))
+            $transaction->setIssuerBankCountry($params['IssuerBankCountry']);
+        if (isset($params['Status']))
+            $transaction->setStatus(strtolower($params['Status']));
+        if (isset($params['StatusCode']))
+            $transaction->setStatusCode($params['StatusCode']);
+        if (isset($params['Reason']))
+            $transaction->setReason($params['Reason']);
+        if (isset($params['ReasonCode']))
+            $transaction->setReasonCode($params['ReasonCode']);
+        if (isset($params['CardHolderMessage']))
+            $transaction->setCardHolderMessage($params['CardHolderMessage']);
+        if (isset($params['Name']))
+            $transaction->setCardHolderName($params['Name']);
+        if (isset($params['Token']))
+            $transaction->setToken($params['Token']);
 
         return $transaction;
     }
