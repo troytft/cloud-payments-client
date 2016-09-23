@@ -4,7 +4,7 @@
 
 ## Установка
 ```bash
-composer require troytft/cloud-payments-client
+composer require sannysoft/cloud-payments-client
 ```
 
 ## Использование
