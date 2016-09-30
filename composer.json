@@ -1,7 +1,7 @@
 {
     "name" : "troytft/cloud-payments-client",
     "description": "Client for CloudPayments.ru",
-    "version" : "0.0.4",
+    "version" : "0.0.7",
     "type" : "library",
     "license" : "MIT",
     "require" : {
@@ -10,11 +10,6 @@
     "autoload" : {
         "psr-4" : {
             "CloudPayments\\" : "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.0.x-dev"
         }
     }
 }
