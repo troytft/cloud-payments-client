@@ -1,10 +1,11 @@
 # CloudPayments PHP Client Library
 
-Клиент для платежного сервиса [CloudPayments](http://cloudpayments.ru/). Позволяет обращаться к [API CloudPayments](http://cloudpayments.ru/Docs/Api) из кода на PHP.
+Клиент для платежного сервиса [CloudPayments](http://cloudpayments.ru/).
+Позволяет обращаться к [API CloudPayments](http://cloudpayments.ru/Docs/Api) из кода на PHP.
 
 ## Установка
 ```bash
-composer require troytft/cloud-payments-client
+composer require sannysoft/cloud-payments-client
 ```
 
 ## Использование

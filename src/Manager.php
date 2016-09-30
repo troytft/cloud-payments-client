@@ -12,6 +12,11 @@ class Manager
     /**
      * @var string
      */
+    protected $locale = 'en-US';
+
+    /**
+     * @var string
+     */
     protected $publicKey;
 
     /**
@@ -36,6 +41,8 @@ class Manager
      */
     protected function sendRequest($endpoint, array $params = [])
     {
+        $params['CultureName'] = $this->locale;
+
         $curl = curl_init();
 
         curl_setopt($curl, CURLOPT_URL, $this->url . $endpoint);
@@ -50,7 +57,23 @@ class Manager
 
         curl_close($curl);
 
-        return (array) json_decode($result, true);
+        return (array)json_decode($result, true);
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * @param string $locale
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 
     /**
@@ -146,6 +169,7 @@ class Manager
      * @param $transactionId
      * @param $token
      * @return Model\Transaction
+     * @throws Exception\PaymentException
      * @throws Exception\RequestException
      */
     public function confirm3DS($transactionId, $token)
@@ -223,7 +247,7 @@ class Manager
     public function findPayment($invoiceId)
     {
         $response = $this->sendRequest('/payments/find', [
-            'TransactionId' => $invoiceId
+            'InvoiceId' => $invoiceId
         ]);
 
         if (!$response['Success']) {
@@ -243,6 +267,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setUrl($value)
     {
@@ -261,6 +286,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setPublicKey($value)
     {
@@ -279,6 +305,7 @@ class Manager
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setPrivateKey($value)
     {

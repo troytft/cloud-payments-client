@@ -29,6 +29,7 @@ class Required3DS
 
     /**
      * @param integer $value
+     * @return $this
      */
     public function setTransactionId($value)
     {
@@ -47,6 +48,7 @@ class Required3DS
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setToken($value)
     {
@@ -65,6 +67,7 @@ class Required3DS
 
     /**
      * @param string $value
+     * @return $this
      */
     public function setUrl($value)
     {
