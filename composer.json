@@ -1,5 +1,5 @@
 {
-    "name" : "sannysoft/cloud-payments-client",
+    "name" : "troytft/cloud-payments-client",
     "description": "Client for CloudPayments.ru",
     "version" : "0.0.7",
     "type" : "library",

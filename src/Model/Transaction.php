@@ -885,62 +885,117 @@ class Transaction
         $transaction->setCardExpiredMonth(explode('/', $params['CardExpDate'])[0]);
         $transaction->setCardExpiredYear(substr(date('Y'), 0, 2) . explode('/', $params['CardExpDate'])[1]);
 
-        if (isset($params['InvoiceId']))
+        if (isset($params['InvoiceId'])) {
             $transaction->setInvoiceId($params['InvoiceId']);
-        if (isset($params['AccountId']))
+        }
+        
+        if (isset($params['AccountId'])) {
             $transaction->setAccountId(['AccountId']);
-        if (isset($params['Email']))
+        }
+
+        if (isset($params['Email'])) {
             $transaction->setEmail($params['Email']);
-        if (isset($params['Description']))
+        }
+
+        if (isset($params['Description'])) {
             $transaction->setDescription($params['Description']);
-        if (isset($params['JsonData']))
+        }
+
+        if (isset($params['JsonData'])) {
             $transaction->setData((array)$params['JsonData']);
-        if (isset($params['CreatedDateIso']))
+        }
+
+        if (isset($params['CreatedDateIso'])) {
             $transaction->setCreatedAt(new \DateTime($params['CreatedDateIso']));
-        if (isset($params['AuthDateIso']))
+        }
+
+        if (isset($params['AuthDateIso'])) {
             $transaction->setAuthorizedAt(new \DateTime($params['AuthDateIso']));
-        if (isset($params['ConfirmDateIso']))
+        }
+
+        if (isset($params['ConfirmDateIso'])) {
             $transaction->setConfirmedAt(new \DateTime($params['ConfirmDateIso']));
-        if (isset($params['AuthCode']))
+        }
+
+        if (isset($params['AuthCode'])) {
             $transaction->setAuthCode($params['AuthCode']);
-        if (isset($params['TestMode']))
+        }
+
+        if (isset($params['TestMode'])) {
             $transaction->setTestMode($params['TestMode']);
-        if (isset($params['IpAddress']))
+        }
+
+        if (isset($params['IpAddress'])) {
             $transaction->setIpAddress($params['IpAddress']);
-        if (isset($params['IpCountry']))
+        }
+
+        if (isset($params['IpCountry'])) {
             $transaction->setIpCountry($params['IpCountry']);
-        if (isset($params['IpCity']))
+        }
+
+        if (isset($params['IpCity'])) {
             $transaction->setIpCity($params['IpCity']);
-        if (isset($params['IpRegion']))
+        }
+
+        if (isset($params['IpRegion'])) {
             $transaction->setIpRegion($params['IpRegion']);
-        if (isset($params['IpDistrict']))
+        }
+
+        if (isset($params['IpDistrict'])) {
             $transaction->setIpDistrict($params['IpDistrict']);
-        if (isset($params['IpLatitude']))
+        }
+
+        if (isset($params['IpLatitude'])) {
             $transaction->setIpLatitude($params['IpLatitude']);
-        if (isset($params['IpLongitude']))
+        }
+
+        if (isset($params['IpLongitude'])) {
             $transaction->setIpLongitude($params['IpLongitude']);
-        if (isset($params['CardType']))
+        }
+
+        if (isset($params['CardType'])) {
             $transaction->setCardType(strtolower($params['CardType']));
-        if (isset($params['CardTypeCode']))
+        }
+
+        if (isset($params['CardTypeCode'])) {
             $transaction->setCardTypeCode($params['CardTypeCode']);
-        if (isset($params['Issuer']))
+        }
+
+        if (isset($params['Issuer'])) {
             $transaction->setIssuer($params['Issuer']);
-        if (isset($params['IssuerBankCountry']))
+        }
+
+        if (isset($params['IssuerBankCountry'])) {
             $transaction->setIssuerBankCountry($params['IssuerBankCountry']);
-        if (isset($params['Status']))
+        }
+
+        if (isset($params['Status'])) {
             $transaction->setStatus(strtolower($params['Status']));
-        if (isset($params['StatusCode']))
+        }
+
+        if (isset($params['StatusCode'])) {
             $transaction->setStatusCode($params['StatusCode']);
-        if (isset($params['Reason']))
+        }
+
+        if (isset($params['Reason'])) {
             $transaction->setReason($params['Reason']);
-        if (isset($params['ReasonCode']))
+        }
+
+        if (isset($params['ReasonCode'])) {
             $transaction->setReasonCode($params['ReasonCode']);
-        if (isset($params['CardHolderMessage']))
+        }
+
+        if (isset($params['CardHolderMessage'])) {
             $transaction->setCardHolderMessage($params['CardHolderMessage']);
-        if (isset($params['Name']))
+        }
+
+        if (isset($params['Name'])) {
             $transaction->setCardHolderName($params['Name']);
-        if (isset($params['Token']))
+        }
+
+        if (isset($params['Token'])) {
             $transaction->setToken($params['Token']);
+        }
 
         return $transaction;
     }
