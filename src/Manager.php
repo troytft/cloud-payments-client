@@ -258,6 +258,30 @@ class Manager
     }
 
     /**
+     * @param $date 
+     * @param $timezone
+     * @return Model\Transaction
+     * @throws Exception\RequestException
+     */
+    public function listPayment($date = '', $timezone = '')
+    {
+        if ($date == '') {
+            $date == date('Y-m-d'); //Today
+        }
+        
+        $response = $this->sendRequest('/payments/list', [
+            'Date' => $date,
+            'TimeZone' => $timezone
+        ]);
+
+        if (!$response['Success']) {
+            throw new Exception\RequestException($response);
+        }
+
+        return Model\Transaction::fromArray($response['Model']);
+    }
+    
+    /**
      * @return string
      */
     public function getUrl()
