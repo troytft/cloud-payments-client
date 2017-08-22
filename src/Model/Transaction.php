@@ -890,7 +890,7 @@ class Transaction
         }
         
         if (isset($params['AccountId'])) {
-            $transaction->setAccountId(['AccountId']);
+            $transaction->setAccountId($params['AccountId']);
         }
 
         if (isset($params['Email'])) {
