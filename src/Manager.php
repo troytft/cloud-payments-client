@@ -294,7 +294,7 @@ class Manager
     {
         $headers = [];
         if($idempotent_id){
-            $headers['X-Request-ID'] = $idempotent_id;
+            $headers[] = "X-Request-ID: {$idempotent_id}";
         }
         $response = $this->sendRequest('/kkt/receipt', $data, $headers);
         if (empty($response['Success'])) {
