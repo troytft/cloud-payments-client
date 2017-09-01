@@ -37,9 +37,10 @@ class Manager
     /**
      * @param string $endpoint
      * @param array $params
+     * @param array $headers
      * @return array
      */
-    protected function sendRequest($endpoint, array $params = [])
+    protected function sendRequest($endpoint, array $params = [], array $headers = [])
     {
         $params['CultureName'] = $this->locale;
 
@@ -51,8 +52,11 @@ class Manager
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+        if(count($headers)){
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        }
+        
         $result = curl_exec($curl);
 
         curl_close($curl);
@@ -279,6 +283,24 @@ class Manager
         }
 
         return Model\Transaction::fromArray($response['Model']);
+    }
+    
+    /**
+     * @param $data
+     * @param $idempotent_id
+     * @throws RequestException
+     */
+    public function receipt($data, $idempotent_id = false)
+    {
+        $headers = [];
+        if($idempotent_id){
+            $headers[] = "X-Request-ID: {$idempotent_id}";
+        }
+        $response = $this->sendRequest('/kkt/receipt', $data, $headers);
+        if (empty($response['Success'])) {
+            throw new RequestException($response);
+        }
+        return $response;
     }
     
     /**
