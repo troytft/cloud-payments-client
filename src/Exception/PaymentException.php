@@ -21,9 +21,15 @@ class PaymentException extends BaseException
 
     public function __construct($response)
     {
-        $this->reason = $response['Model']['Reason'];
-        $this->reasonCode = $response['Model']['ReasonCode'];
-        $this->cardHolderMessage = $response['Model']['CardHolderMessage'];
+        $this->reason = null;
+        $this->reasonCode = null;
+        $this->cardHolderMessage = null;
+
+        if(isset($response['Model'])) {
+            if(isset($response['Model']['Reason'])) $this->reason = $response['Model']['Reason'];
+            if(isset($response['Model']['ReasonCode'])) $this->reasonCode = $response['Model']['ReasonCode'];
+            if(isset($response['Model']['CardHolderMessage'])) $this->cardHolderMessage = $response['Model']['CardHolderMessage'];
+        }
 
         parent::__construct($this->reason);
     }
