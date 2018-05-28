@@ -116,15 +116,15 @@ class Manager
 
         $response = $this->sendRequest($endpoint, array_merge($defaultParams, $params));
 
-        if ($response['Success']) {
+        if (isset($response['Success']) && $response['Success']) {
             return Model\Transaction::fromArray($response['Model']);
         }
 
-        if ($response['Message']) {
+        if (isset($response['Message']) && $response['Message']) {
             throw new Exception\RequestException($response);
         }
 
-        if (isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
+        if (isset($response['Model']) && isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
             throw new Exception\PaymentException($response);
         }
 
@@ -154,15 +154,15 @@ class Manager
 
         $response = $this->sendRequest($endpoint, array_merge($defaultParams, $params));
 
-        if ($response['Success']) {
+        if (isset($response['Success']) && $response['Success']) {
             return Model\Transaction::fromArray($response['Model']);
         }
 
-        if ($response['Message']) {
+        if (isset($response['Message']) && $response['Message']) {
             throw new Exception\RequestException($response);
         }
 
-        if (isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
+        if (isset($response['Model']) && isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
             throw new Exception\PaymentException($response);
         }
 
@@ -183,11 +183,11 @@ class Manager
             'PaRes' => $token
         ]);
 
-        if ($response['Message']) {
+        if (isset($response['Message']) && $response['Message']) {
             throw new Exception\RequestException($response);
         }
 
-        if (isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
+        if (isset($response['Model']) && isset($response['Model']['ReasonCode']) && $response['Model']['ReasonCode'] !== 0) {
             throw new Exception\PaymentException($response);
         }
 
@@ -206,7 +206,7 @@ class Manager
             'Amount' => $amount
         ]);
 
-        if (!$response['Success']) {
+        if (isset($response['Success']) && !$response['Success']) {
             throw new Exception\RequestException($response);
         }
     }
@@ -221,7 +221,7 @@ class Manager
             'TransactionId' => $transactionId
         ]);
 
-        if (!$response['Success']) {
+        if (isset($response['Success']) && !$response['Success']) {
             throw new Exception\RequestException($response);
         }
     }
@@ -238,7 +238,7 @@ class Manager
             'Amount' => $amount
         ]);
 
-        if (!$response['Success']) {
+        if (isset($response['Success']) && !$response['Success']) {
             throw new Exception\RequestException($response);
         }
     }
@@ -254,7 +254,7 @@ class Manager
             'InvoiceId' => $invoiceId
         ]);
 
-        if (!$response['Success']) {
+        if (isset($response['Success']) && !$response['Success']) {
             throw new Exception\RequestException($response);
         }
 
@@ -278,7 +278,7 @@ class Manager
             'TimeZone' => $timezone
         ]);
 
-        if (!$response['Success']) {
+        if (isset($response['Success']) && !$response['Success']) {
             throw new Exception\RequestException($response);
         }
 
