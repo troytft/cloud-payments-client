@@ -43,6 +43,7 @@ class Manager
     protected function sendRequest($endpoint, array $params = [], array $headers = [])
     {
         $params['CultureName'] = $this->locale;
+        $headers[] = 'Content-Type: application/json';
 
         $curl = curl_init();
 
@@ -52,16 +53,14 @@ class Manager
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
-        if(count($headers)){
-            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        }
-        
+        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
         $result = curl_exec($curl);
 
         curl_close($curl);
 
-        return (array)json_decode($result, true);
+        return (array) json_decode($result, true);
     }
 
     /**
@@ -262,7 +261,7 @@ class Manager
     }
 
     /**
-     * @param $date 
+     * @param $date
      * @param $timezone
      * @return Model\Transaction
      * @throws Exception\RequestException
@@ -272,7 +271,7 @@ class Manager
         if ($date == '') {
             $date == date('Y-m-d'); //Today
         }
-        
+
         $response = $this->sendRequest('/payments/list', [
             'Date' => $date,
             'TimeZone' => $timezone
@@ -284,25 +283,27 @@ class Manager
 
         return Model\Transaction::fromArray($response['Model']);
     }
-    
+
     /**
      * @param $data
      * @param $idempotent_id
      * @throws RequestException
      */
-    public function receipt($data, $idempotent_id = false)
+    public function receipt($data, $requestId = null)
     {
         $headers = [];
-        if($idempotent_id){
-            $headers[] = "X-Request-ID: {$idempotent_id}";
+        if ($requestId) {
+            $headers[] = "X-Request-ID: {$requestId}";
         }
+
         $response = $this->sendRequest('/kkt/receipt', $data, $headers);
         if (empty($response['Success'])) {
-            throw new RequestException($response);
+            throw new Exception\RequestException($response);
         }
+
         return $response;
     }
-    
+
     /**
      * @return string
      */
