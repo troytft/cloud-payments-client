@@ -60,7 +60,7 @@ class Manager
 
         curl_close($curl);
 
-        return (array) json_decode($result, true);
+        return (array)json_decode($result, true);
     }
 
     /**
@@ -269,7 +269,7 @@ class Manager
     public function listPayment($date = '', $timezone = '')
     {
         if ($date == '') {
-            $date == date('Y-m-d'); //Today
+            $date = date('Y-m-d'); //Today
         }
 
         $response = $this->sendRequest('/payments/list', [
