@@ -286,8 +286,9 @@ class Manager
 
     /**
      * @param $data
-     * @param $idempotent_id
-     * @throws RequestException
+     * @param null $requestId
+     * @return array
+     * @throws Exception\RequestException
      */
     public function receipt($data, $requestId = null)
     {
